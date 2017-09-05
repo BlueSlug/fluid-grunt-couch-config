@@ -2,49 +2,35 @@
  * grunt-sjrk-couch-config
  * https://github.com/BlueSlug/grunt-sjrk-couch-config
  *
- * Copyright (c) 2017 BlueSlug
- * Licensed under the MIT license.
+ * Copyright (c) 2017 OCAD University
  */
 
 'use strict';
 
 module.exports = function(grunt) {
+    var couchConfig = require("sjrk-couch-config");
 
-  // Please see the Grunt documentation for more information regarding task
-  // creation: http://gruntjs.com/creating-tasks
+    grunt.registerMultiTask("sjrk_couch_config", "Automating declarative CouchDB configs using Infusion", function() {
+        var done = this.async();
 
-  grunt.registerMultiTask('sjrk_couch_config', 'Automating declarative CouchDB configs using Infusion', function() {
-    // Merge task-specific and/or target-specific options with these defaults.
-    var options = this.options({
-      punctuation: '.',
-      separator: ', '
+        this.files.forEach(function(f) {
+            var nodeOptions = {
+                cmd: process.argv[0], // node
+                args: [f.src[0]], // the file path
+                opts: {
+                    stdio: "inherit"
+                }
+            };
+
+            grunt.util.spawn(nodeOptions, function (error, result, code) {
+                if (error) {
+                    grunt.log.writeln("An error occurred while running the CouchConfig file: " + error);
+                } else {
+                    grunt.log.writeln("CouchConfig file " + f.src + " was run successfully.");
+                }
+
+                done();
+            });
+        });
     });
-
-    // Iterate over all specified file groups.
-    this.files.forEach(function(f) {
-      // Concat specified files.
-      var src = f.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
-        if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
-          return false;
-        } else {
-          return true;
-        }
-      }).map(function(filepath) {
-        // Read file source.
-        return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(options.separator));
-
-      // Handle options.
-      src += options.punctuation;
-
-      // Write the destination file.
-      grunt.file.write(f.dest, src);
-
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
-    });
-  });
-
 };

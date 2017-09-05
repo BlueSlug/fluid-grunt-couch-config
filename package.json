@@ -3,10 +3,7 @@
   "description": "Automating declarative CouchDB configs using Infusion",
   "version": "0.0.1",
   "homepage": "https://github.com/BlueSlug/grunt-sjrk-couch-config",
-  "author": {
-    "name": "BlueSlug",
-    "email": "mossmonkey@gmail.com"
-  },
+  "author": "OCAD University",
   "repository": {
     "type": "git",
     "url": "https://github.com/BlueSlug/grunt-sjrk-couch-config.git"
