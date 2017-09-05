@@ -30,11 +30,7 @@
 
         // Configuration to be run (and then tested).
         sjrk_couch_config: {
-            runDbSetup: {
-                files: {
-                    src: ['test/fixtures/dbSetup.js']
-                }
-            }
+            files: ['test/fixtures/dbSetup.js']
         },
 
         // Unit tests.
