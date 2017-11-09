@@ -1,0 +1,33 @@
+{
+  "name": "grunt-sjrk-couch-config",
+  "description": "Automating declarative CouchDB configs using Infusion",
+  "version": "0.0.1",
+  "homepage": "https://github.com/BlueSlug/grunt-sjrk-couch-config",
+  "author": "OCAD University",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BlueSlug/grunt-sjrk-couch-config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BlueSlug/grunt-sjrk-couch-config/issues"
+  },
+  "license": "(BSD-3-Clause OR ECL-2.0)",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "sjrk-couch-config": "https://github.com/waharnum/couch-config#SJRK-6"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "^0.9.2",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-nodeunit": "^0.3.3",
+    "grunt": "~0.4.5"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}
