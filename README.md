@@ -1,3 +1,5 @@
+# _NOTE: This repository is not used and has been archived._
+
 # fluid-grunt-couch-config
 
 > Automating declarative CouchDB configs using Infusion
